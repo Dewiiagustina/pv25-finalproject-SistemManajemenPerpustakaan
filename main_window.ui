@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1581</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+                background-color: #f0f2f5; /
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QMenuBar {
+                background-color: #34495E; 
+                color: white;
+                font-size: 14px;
+                padding: 5px;
+            }
+            QMenuBar::item {
+                padding: 5px 10px;
+                background: transparent;
+            }
+            QMenuBar::item:selected {
+                background-color: #4A637C; 
+            }
+            QMenu {
+                background-color: #34495E;
+                color: white;
+                border: 1px solid #2C3E50;
+                border-radius: 5px;
+            }
+            QMenu::item {
+                padding: 8px 20px;
+                background-color: transparent;
+            }
+            QMenu::item:selected {
+                background-color: #2980B9; /* Blue on hover for menu items */
+            }
+            QLabel {
+                color: #34495E;
+            }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <property name="leftMargin">
+     <number>30</number>
+    </property>
+    <property name="topMargin">
+     <number>30</number>
+    </property>
+    <property name="rightMargin">
+     <number>30</number>
+    </property>
+    <property name="bottomMargin">
+     <number>30</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="widget_2" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="leftMargin">
+        <number>280</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>450</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="title_label">
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+font-size: 45px;
+font-weight: bold; 
+margin-bottom: 25px; 
+color: #2C3E50; 
+text-shadow: 1px 1px 2px #bdc3c7;
+}</string>
+         </property>
+         <property name="text">
+          <string>Sistem Manajemen Perpustakaan</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="gambar_judul">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_tambah">
+        <property name="styleSheet">
+         <string notr="true"> QPushButton {
+                background-color: #1167b1;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 15px;
+                font-weight: bold;
+                border: none;
+}
+QPushButton:hover {
+                background-color: #2a9df4;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Tambah Buku</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QFrame" name="card_container">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+                background-color: #ECF0F1;
+                border-radius: 10px;
+                padding: 15px;
+            }
+            QLabel {
+                font-size: 15px;
+                color: #000000;
+                font-weight: 500;
+            }
+            QLineEdit {
+                padding: 10px;
+                border: 2px solid #03254c;
+                border-radius: 8px;
+                font-size: 15px;
+                background-color: white;
+            }
+            QLineEdit:focus {
+                border: 2px solid #3498db;
+                outline: none;
+            }
+            QComboBox {
+                padding: 10px;
+                border: 2px solid #03254c;
+                border-radius: 8px;
+                font-size: 15px;
+                background-color: white;
+            }
+            QComboBox:focus {
+                border: 2px solid #3498db;
+                outline: none;
+            }</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="topMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>🔍 Cari:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="search_input">
+         <property name="placeholderText">
+          <string>Cari judul, penulis, ID, atau lokasi rak...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Status</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="filter_status">
+         <item>
+          <property name="text">
+           <string>Semua</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tersedia</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dipinjam</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="table">
+      <property name="styleSheet">
+       <string notr="true">QTableWidget {
+                border: 1px solid #BDC3C7;
+                border-radius: 10px;
+                font-size: 18px;
+                selection-background-color: #D1F2EB; 
+            }
+            QHeaderView::section {
+                background-color: #03254c;
+                color: white;
+                padding: 8px;
+                border: 1px solid #2C3E50;
+                font-weight: bold;
+                font-size: 20px;
+                min-height: 30px; 
+            }
+            QTableWidget::item {
+                padding: 7px;
+                border-bottom: 1px solid #EBEDEF; 
+            }
+            QTableWidget::item:selected {
+                background-color: #D1F2EB;
+                color: #2C3E50;
+            }
+            QTableWidget QAbstractScrollArea::corner {
+                background: transparent;
+                border: none;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #f0f0f0;
+                width: 12px;
+                margin: 0px 0px 0px 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: #bdc3c7;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #95a5a6;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+            }
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none;
+            }</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Judul</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Penulis</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Kategori </string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Status</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Tgl Pinjam</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Tgl kembali</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Denda</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Lokasi Rak</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Aksi</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1581</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="export_action"/>
+    <addaction name="exit_action"/>
+   </widget>
+   <widget class="QMenu" name="menuBuku">
+    <property name="title">
+     <string>Buku</string>
+    </property>
+    <addaction name="add_action"/>
+    <addaction name="edit_action"/>
+    <addaction name="delete_action"/>
+    <addaction name="change_status_action"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuBuku"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="export_action">
+   <property name="text">
+    <string>Export CSV</string>
+   </property>
+  </action>
+  <action name="exit_action">
+   <property name="text">
+    <string>keluar</string>
+   </property>
+  </action>
+  <action name="add_action">
+   <property name="text">
+    <string>Tambah Buku</string>
+   </property>
+  </action>
+  <action name="edit_action">
+   <property name="text">
+    <string>Edit Buku</string>
+   </property>
+  </action>
+  <action name="delete_action">
+   <property name="text">
+    <string>Hapus Buku</string>
+   </property>
+  </action>
+  <action name="change_status_action">
+   <property name="text">
+    <string>Ubah Status Buku</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
