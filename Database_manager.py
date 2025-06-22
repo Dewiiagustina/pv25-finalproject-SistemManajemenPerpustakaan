@@ -30,11 +30,6 @@ class DatabaseManager:
                 lokasi_rak TEXT
             )
         ''')
-        try:
-            cursor.execute("ALTER TABLE buku ADD COLUMN lokasi_rak TEXT")
-            self.conn.commit()
-        except sqlite3.OperationalError:
-            pass 
         self.conn.commit()
 
     def add_book(self, judul, penulis, kategori, lokasi_rak):

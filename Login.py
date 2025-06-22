@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5.QtGui import QPixmap
 from PyQt5.uic import loadUi
-from main_window_app import Perpustakaan
+from Dashboard import Perpustakaan
 from Database_manager import DatabaseManager
 
 

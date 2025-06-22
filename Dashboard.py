@@ -11,29 +11,14 @@ from PyQt5.uic import loadUi
 from PyQt5.QtGui import QPixmap
 from Tambah_Buku import BookFormDialog
 from Database_manager import DatabaseManager
+from About import AboutDialog
 
-class AboutDialog(QDialog):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        loadUi("ui/menu_about.ui",self)
-        self.setWindowTitle("Tentang Aplikasi")
-        self.setStyleSheet("""
-                           #buttonBox QPushButton {
-                                background-color: #1167b1;
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 4px;
-                            }
 
-                            #buttonBox QPushButton:hover {
-                                background-color: #0e5492;
-                            }
-        """)
     
 class Perpustakaan(QMainWindow):
     def __init__(self, db_manager, parent=None):
         super().__init__(parent)
-        loadUi("ui/main_window.ui", self) 
+        loadUi("ui/dashboard.ui", self) 
         self.setWindowTitle("Sistem Manajemen Perpustakaan")
         self.db_manager=db_manager
         self.db=self.db_manager.conn
@@ -203,17 +188,7 @@ class Perpustakaan(QMainWindow):
                 self.ubah_status_dropdown(b_id, j_buku, old_stat, cb.currentText(), cb)
             )
             self.table.setCellWidget(row, 4, status_combo_box) 
-            denda = "-"
-            if row_data[4] == "Dipinjam" and row_data[6]: 
-                try:
-                    tgl_kembali_str = row_data[6]
-                    if tgl_kembali_str: 
-                        tgl_kembali = datetime.strptime(tgl_kembali_str, "%Y-%m-%d")
-                        selisih = (datetime.now() - tgl_kembali).days
-                        if selisih > 0: 
-                            denda = f"Rp {selisih * 1000}" 
-                except ValueError:
-                    denda = "Tanggal invalid" 
+            denda = self.hitung_denda(row_data[4], row_data[6])
             item_denda = QTableWidgetItem(denda)
             item_denda.setFlags(item_denda.flags() | Qt.TextWordWrap)
             self.table.setItem(row, 7, item_denda)
@@ -249,11 +224,20 @@ class Perpustakaan(QMainWindow):
         self.card_total_buku.findChild(QLabel, "total_buku_val").setText(str(total_buku))
         self.card_dipinjam.findChild(QLabel, "dipinjam_val").setText(str(total_dipinjam))
         self.card_tersedia.findChild(QLabel, "tersedia_val").setText(str(total_tersedia))
-
-        #self.table.resizeColumnsToContents() 
-        #self.table.resizeRowsToContents() 
+        
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
         self.table.horizontalHeader().setSectionResizeMode(self.table.columnCount() - 1, QHeaderView.Stretch)
+        
+    def hitung_denda(self,status, tanggal_kembali):
+        if status == "Dipinjam" and tanggal_kembali:
+            try:
+                tgl_kembali = datetime.strptime(tanggal_kembali, "%Y-%m-%d")
+                selisih = (datetime.now() - tgl_kembali).days
+                if selisih > 0:
+                    return f"Rp {selisih * 1000}"
+            except ValueError:
+                return "Tanggal invalid"
+        return "-"
 
     def ubah_status_buku_via_menu(self):
         selected_rows = self.table.selectedItems()
@@ -355,18 +339,7 @@ class Perpustakaan(QMainWindow):
                     writer.writerow(["ID", "Judul", "Penulis", "Kategori", "Status", "Tgl Pinjam", "Tgl Kembali", "Denda (Saat Export)", "Lokasi Rak"])
                     
                     for row_data in data:
-                        denda = "-"
-                        if row_data[4] == "Dipinjam" and row_data[6]:
-                            try:
-                                tgl_kembali_str = row_data[6]
-                                if tgl_kembali_str:
-                                    tgl_kembali = datetime.strptime(tgl_kembali_str, "%Y-%m-%d")
-                                    selisih = (datetime.now() - tgl_kembali).days
-                                    if selisih > 0:
-                                        denda = f"Rp {selisih * 1000}"
-                            except ValueError:
-                                denda = "Tanggal invalid"
-                    
+                        denda = self.hitung_denda(row_data[4], row_data[6])
                         row_to_write = list(row_data[:7]) + [denda, row_data[7]]
                         writer.writerow(row_to_write)
 
