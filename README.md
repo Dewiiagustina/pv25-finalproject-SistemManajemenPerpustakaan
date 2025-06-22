@@ -6,38 +6,38 @@ Aplikasi desktop berbasis **PyQt5** dan **SQLite** untuk mengelola data buku dal
 
 ##  Fitur Utama
 
-- ** Login Otentikasi**  
+- **Login Otentikasi**  
   Form login untuk membatasi akses pengguna ke sistem.
 
-- ** Dashboard Interaktif**  
+- **Dashboard Interaktif**  
   Menampilkan statistik jumlah buku total, buku dipinjam, dan buku tersedia dalam bentuk kartu info.
 
-- ** Manajemen Buku (CRUD)**  
+- **Manajemen Buku (CRUD)**  
   - Tambah data buku baru  
   - Edit data buku yang sudah ada  
   - Hapus data buku dengan konfirmasi  
   - Informasi mencakup judul, penulis, kategori, status, dan lokasi rak.
 
-- ** Peminjaman dan Pengembalian Buku**  
+- **Peminjaman dan Pengembalian Buku**  
   - Ubah status buku menjadi *Dipinjam* atau *Tersedia*  
   - Tanggal kembali dipilih otomatis melalui kalender  
   - Data peminjaman disimpan ke database.
 
-- ** Perhitungan Denda Otomatis**  
+- **Perhitungan Denda Otomatis**  
   - Denda dihitung otomatis berdasarkan selisih hari dari tanggal kembali  
   - Tarif denda: **Rp 1.000/hari keterlambatan**  
   - Denda ditampilkan di tabel dan saat ekspor.
 
-- ** Ekspor Data ke CSV**  
+- **Ekspor Data ke CSV**  
   - Seluruh data buku dapat diekspor ke file `.csv`  
   - Termasuk informasi denda dan lokasi rak.
 
-- ** Tentang Aplikasi (About)**  
+- **Tentang Aplikasi (About)**  
   - Dialog informasi pengembang dan detail proyek.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 - Python 3.x
 - PyQt5
@@ -46,9 +46,7 @@ Aplikasi desktop berbasis **PyQt5** dan **SQLite** untuk mengelola data buku dal
 
 ---
 
-## 🖥️ Tampilan Antarmuka
-
-> Beberapa tampilan aplikasi:
+## Tampilan Antarmuka
 - Form Login
   ![login](https://github.com/user-attachments/assets/720c33cc-9bc7-4bcc-ab66-4d03caaa5f62)
 - Dashboard
