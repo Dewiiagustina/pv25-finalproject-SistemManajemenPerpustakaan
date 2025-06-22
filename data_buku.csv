@@ -1,0 +1,9 @@
+ID,Judul,Penulis,Kategori,Status,Tgl Pinjam,Tgl Kembali,Denda (Saat Export),Lokasi Rak
+3,Bumi,Tere Liye,Fiksi,Tersedia,,,-,A2
+4,Bintang,Tere Liye,Fiksi,Dipinjam,2025-06-22,2025-06-15,Rp 7000,A2
+5,bulan,Tere Liye,Fiksi,Dipinjam,2025-06-22,2025-06-29,-,A2
+6,Matahari,Tere Liye,Fiksi,Dipinjam,2025-06-22,2025-06-29,-,A2
+7,Komet,Tere Liye,Fiksi,Tersedia,,,-,A2
+8,Selena,Tere Liye,Fiksi,Tersedia,,,-,A2
+9,Pesantren Impian,Asma Nadia,Fiksi,Tersedia,,,-,B2
+10,Tanda Mata Kematian,Eve Shi,Fiksi,Tersedia,,,-,B2

@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from PyQt5.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QComboBox, QTableWidget, QTableWidgetItem, QMessageBox,
-    QFileDialog, QHeaderView, QDateEdit, QMenuBar, QAction, QDialog, QDialogButtonBox # QDialog dan QDialogButtonBox diimpor juga tapi tidak digunakan langsung di sini
+    QFileDialog, QHeaderView, QDateEdit, QMenuBar, QAction, QDialog, QDialogButtonBox 
 )
 from PyQt5.QtCore import Qt, QDate
 from PyQt5.uic import loadUi
@@ -49,16 +49,16 @@ class Perpustakaan(QMainWindow):
         self.filter_status.currentIndexChanged.connect(self.load_data)
         self.filter_status.setToolTip("Filter bedasarkan status Buku")
         
-        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Interactive) # ID
-        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Interactive) # Judul
-        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.Interactive) # Penulis
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.Interactive) # Kategori
-        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.Interactive) # Status
-        self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.Interactive) # Tgl Pinjam
-        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.Interactive) # Tgl Kembali
-        self.table.horizontalHeader().setSectionResizeMode(7, QHeaderView.Interactive) # Denda
-        self.table.horizontalHeader().setSectionResizeMode(8, QHeaderView.Interactive) # Lokasi Rak
-        self.table.horizontalHeader().setSectionResizeMode(9, QHeaderView.Stretch) # Kolom Aksi akan meregang
+        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(7, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(8, QHeaderView.Interactive) 
+        self.table.horizontalHeader().setSectionResizeMode(9, QHeaderView.Stretch) 
         
         self.table.setSelectionBehavior(QTableWidget.SelectRows) 
         self.table.setEditTriggers(QTableWidget.NoEditTriggers) 
@@ -127,9 +127,7 @@ class Perpustakaan(QMainWindow):
             msg_box_widget.setLayout(msg_box_layout)
             msg_box.layout().addWidget(msg_box_widget) 
             msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-            
             ret = msg_box.exec_() 
-
             if ret == QMessageBox.Ok:
                 tgl_pinjam = datetime.now().strftime("%Y-%m-%d")
                 tgl_kembali = date_edit.date().toString("yyyy-MM-dd")
@@ -138,19 +136,15 @@ class Perpustakaan(QMainWindow):
                 combo_box.setCurrentText(old_status)
         else: 
             self.ubah_status_db(book_id, new_status_text)
-        
         combo_box.blockSignals(False) 
-
     def load_data(self):
         keyword = self.search_input.text().lower().strip()
         status_filter = self.filter_status.currentText()
         buku_list = self.db_manager.get_books(keyword, status_filter)
-
         self.table.setRowCount(0)
         total_buku = 0
         total_dipinjam = 0
         total_tersedia = 0 
-
         for row_data in buku_list:
             total_buku += 1
             if row_data[4] == "Dipinjam":
@@ -298,7 +292,7 @@ class Perpustakaan(QMainWindow):
             try:
                 self.db_manager.delete_book(id_buku)
                 QMessageBox.information(self, "Berhasil", "Buku berhasil dihapus!", QMessageBox.Ok)
-                self.load_data() # Muat ulang data
+                self.load_data() 
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Terjadi kesalahan saat menghapus buku: {e}", QMessageBox.Ok)
 
@@ -311,7 +305,7 @@ class Perpustakaan(QMainWindow):
         
     def tambah_buku(self):
         dialog = BookFormDialog(parent=self) 
-        if dialog.exec_() == QDialog.Accepted: # Jika dialog diterima
+        if dialog.exec_() == QDialog.Accepted: 
             new_data = dialog.get_data()
             judul = new_data["judul"]
             penulis = new_data["penulis"]
