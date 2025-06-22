@@ -7,7 +7,7 @@ Aplikasi desktop berbasis **PyQt5** dan **SQLite** untuk mengelola data buku dal
 ##  Fitur Utama
 
 - **Login Otentikasi**  
-  Form login untuk membatasi akses pengguna ke sistem.
+  Form login untuk kemanan sistem.
 
 - **Dashboard Interaktif**  
   Menampilkan statistik jumlah buku total, buku dipinjam, dan buku tersedia dalam bentuk kartu info.
