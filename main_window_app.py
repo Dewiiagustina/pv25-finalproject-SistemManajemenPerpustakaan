@@ -12,6 +12,24 @@ from PyQt5.QtGui import QPixmap
 from Tambah_Buku import BookFormDialog
 from Database_manager import DatabaseManager
 
+class AboutDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        loadUi("ui/menu_about.ui",self)
+        self.setWindowTitle("Tentang Aplikasi")
+        self.setStyleSheet("""
+                           #buttonBox QPushButton {
+                                background-color: #1167b1;
+                                color: white;
+                                padding: 6px 12px;
+                                border-radius: 4px;
+                            }
+
+                            #buttonBox QPushButton:hover {
+                                background-color: #0e5492;
+                            }
+        """)
+    
 class Perpustakaan(QMainWindow):
     def __init__(self, db_manager, parent=None):
         super().__init__(parent)
@@ -28,6 +46,7 @@ class Perpustakaan(QMainWindow):
         self.edit_action.triggered.connect(self.edit_buku_dialog)
         self.delete_action.triggered.connect(self.hapus_buku)
         self.change_status_action.triggered.connect(self.ubah_status_buku_via_menu)
+        self.actionAbout.triggered.connect(self.about_action)
         
         self.btn_tambah.clicked.connect(self.tambah_buku)
         self.btn_tambah.setCursor(Qt.PointingHandCursor) 
@@ -73,6 +92,12 @@ class Perpustakaan(QMainWindow):
         self.statusbar.addPermanentWidget(label_nama) 
         
         self.load_data()
+        
+    def about_action(self):
+        dialog= AboutDialog(self)
+        dialog.exec_()
+        
+    
     def stat_card(self, title, value, bg_color, text_color, value_object_name):
         card_widget = QWidget()
         card_layout = QVBoxLayout(card_widget)
@@ -225,13 +250,12 @@ class Perpustakaan(QMainWindow):
         self.card_dipinjam.findChild(QLabel, "dipinjam_val").setText(str(total_dipinjam))
         self.card_tersedia.findChild(QLabel, "tersedia_val").setText(str(total_tersedia))
 
-        self.table.resizeColumnsToContents() 
-        self.table.resizeRowsToContents() 
+        #self.table.resizeColumnsToContents() 
+        #self.table.resizeRowsToContents() 
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
         self.table.horizontalHeader().setSectionResizeMode(self.table.columnCount() - 1, QHeaderView.Stretch)
 
     def ubah_status_buku_via_menu(self):
-        """Memicu perubahan status buku dari menu bar (dengan memilih baris)."""
         selected_rows = self.table.selectedItems()
         if not selected_rows:
             QMessageBox.warning(self, "Peringatan", "Pilih buku yang ingin diubah statusnya dari tabel.", QMessageBox.Ok)
@@ -247,7 +271,6 @@ class Perpustakaan(QMainWindow):
             QMessageBox.warning(self, "Error", "Status kolom bukan dropdown.", QMessageBox.Ok)
 
     def edit_buku_dialog_from_row(self, row):
-        """Membuka dialog edit buku dengan data dari baris tabel tertentu."""
         id_buku = self.table.item(row, 0).text()
         judul_lama = self.table.item(row, 1).text()
         penulis_lama = self.table.item(row, 2).text()

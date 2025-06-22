@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1581</width>
+    <width>1638</width>
     <height>900</height>
    </rect>
   </property>
@@ -362,12 +362,13 @@ QPushButton:hover {
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1581</width>
+     <width>1638</width>
      <height>18</height>
     </rect>
    </property>
@@ -377,6 +378,7 @@ QPushButton:hover {
     </property>
     <addaction name="export_action"/>
     <addaction name="exit_action"/>
+    <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuBuku">
     <property name="title">
@@ -390,7 +392,6 @@ QPushButton:hover {
    <addaction name="menuFile"/>
    <addaction name="menuBuku"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="export_action">
    <property name="text">
     <string>Export CSV</string>
@@ -419,6 +420,11 @@ QPushButton:hover {
   <action name="change_status_action">
    <property name="text">
     <string>Ubah Status Buku</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>
